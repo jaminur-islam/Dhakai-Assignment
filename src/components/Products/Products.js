@@ -102,7 +102,7 @@ const Products = () => {
 
       <InfiniteScroll
         hasMore={true}
-        dataLength={products.length}
+        dataLength={products?.length}
         next={() => {
           setLimit(limit + 8);
         }}

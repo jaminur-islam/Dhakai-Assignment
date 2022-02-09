@@ -29,6 +29,7 @@ import Menu from "@mui/material/Menu";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { makeStyles } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 //============================== Use Style on makeStyle =======================================//
 const useStyle = makeStyles({
@@ -238,6 +239,11 @@ function Dashboard(props) {
             onClick={() => {
               localStorage.clear("token");
               navigate("/login");
+              Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Logout successfully",
+              });
             }}
           >
             <Link to="/login">

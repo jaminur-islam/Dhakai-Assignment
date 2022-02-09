@@ -1,7 +1,9 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const useUser = () => {
-  const loginUser = (data, navigate) => {
+  const [error, setError] = useState("");
+  const loginUser = (data, deviceUuid, navigate) => {
     fetch("https://devapi.dhakai.com/api/v2/login-buyer", {
       method: "POST",
       headers: {
@@ -10,21 +12,33 @@ const useUser = () => {
       body: JSON.stringify({
         auth: {
           email: data.email,
-          deviceUuid: "f8bc7070-8979-11ec-8752-6b2d782166ad",
+          deviceUuid: deviceUuid,
         },
         password: data.password,
       }),
     })
       .then((res) => res.json())
       .then((result) => {
-        localStorage.setItem("token", result.result.token);
+        localStorage.setItem("token", result?.result.token);
         if (result.statusCode === 200) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Login successfully",
+          });
           navigate("/");
+          setError("");
+        } else {
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: "User Not Authorized",
+          });
         }
       });
   };
 
-  return { loginUser };
+  return { loginUser, error };
 };
 
 export default useUser;

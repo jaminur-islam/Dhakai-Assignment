@@ -20,7 +20,6 @@ function App() {
             }
           >
             <Route path="/" element={<Products />} />
-            <Route path="/dashboard/catalog" element={<h1> Catalog</h1>} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<h1>not found page</h1>} />

@@ -1,10 +1,10 @@
-import { Hidden, IconButton, OutlinedInput } from "@mui/material";
+import { IconButton, OutlinedInput } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
-import { Checkbox, Divider, FormControlLabel } from "@material-ui/core";
+import { Checkbox, FormControlLabel } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import useAuth from "../../hooks/useAuth";
@@ -94,16 +94,25 @@ const Login = () => {
   const { loginUser } = useAuth();
   const classes = useFormStyle();
   const navigate = useNavigate();
+  const [deviceUuid, setDeviceUuid] = useState("");
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     reset();
-    loginUser(data, navigate);
+    loginUser(data, deviceUuid, navigate);
   };
 
   const [values, setValues] = useState(false);
   const handleShowPassword = () => {
     setValues(!values);
   };
+
+  useEffect(() => {
+    fetch("https://devapi.dhakai.com/api/v2/deviceuid")
+      .then((res) => res.json())
+      .then((result) => {
+        setDeviceUuid(result?.result.deviceUuid);
+      });
+  }, []);
 
   return (
     <div>
