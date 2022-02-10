@@ -124,10 +124,10 @@ const Login = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     reset();
-    //===== Call login function on useUser ======//
+    //===== Call login function on useUser hooks ======//
     loginUser(data, deviceUuid, navigate);
   };
-  //========== login form show/hide state===========//
+
   const [values, setValues] = useState(false);
   const handleShowPassword = () => {
     setValues(!values);
@@ -141,6 +141,7 @@ const Login = () => {
         setDeviceUuid(result?.result.deviceUuid);
       });
   }, []);
+  //========== login form show/hide state===========//
   const [display, setDisplay] = useState(true);
   const handleLoginForm = (value) => {
     setDisplay(value);
