@@ -31,7 +31,7 @@ import { makeStyles } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-//============================== Use Style on makeStyle =======================================//
+//============================== Using style in make style=======================================//
 const useStyle = makeStyles({
   switchButtonBox: {
     width: "170px",
@@ -99,11 +99,11 @@ const useStyle = makeStyles({
 });
 
 const drawerWidth = 85;
-//============================== Dashboard component ===========================================//
+//============================== Start Dashboard component ===========================================//
 function Dashboard(props) {
   const classes = useStyle();
   const navigate = useNavigate();
-  const { window } = props;
+  const { window, handleInputValue } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -302,6 +302,7 @@ function Dashboard(props) {
             <img src={searchIcon} alt="" />
             <input
               type="text"
+              onChange={handleInputValue}
               placeholder="Search by name, group, type and others"
             />
           </Box>
@@ -382,10 +383,6 @@ function Dashboard(props) {
 }
 
 Dashboard.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 

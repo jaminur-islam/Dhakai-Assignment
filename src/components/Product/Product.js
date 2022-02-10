@@ -5,10 +5,11 @@ import CardMedia from "@mui/material/CardMedia";
 import ProductModal from "../ProductModal/ProductModal";
 import Skeleton from "../Skeleton/Skeleton";
 
+//===============start Product component=====================//
 const Product = ({ product, isLoading }) => {
+  // ===== product object Destructuring ====//
   const img = product.meta.banners;
   const { logo, companyName } = product.meta;
-
   const { addresses } = product;
 
   const [open, setOpen] = React.useState(false);
@@ -98,7 +99,7 @@ const Product = ({ product, isLoading }) => {
       ) : (
         <Skeleton />
       )}
-
+      {/* ================ Product Modal ========================== */}
       <ProductModal
         open={open}
         setOpen={setOpen}

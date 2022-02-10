@@ -7,6 +7,10 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Products from "./components/Products/Products";
 
 function App() {
+  const [inputValue, setInputValue] = useState("");
+  const handleInputValue = (e) => {
+    setInputValue(e.target.value);
+  };
   return (
     <AuthContext>
       <BrowserRouter>
@@ -15,11 +19,11 @@ function App() {
             path="/"
             element={
               <PrivetRouter>
-                <Dashboard></Dashboard>
+                <Dashboard handleInputValue={handleInputValue}></Dashboard>
               </PrivetRouter>
             }
           >
-            <Route path="/" element={<Products />} />
+            <Route path="/" element={<Products inputValue={inputValue} />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<h1>not found page</h1>} />

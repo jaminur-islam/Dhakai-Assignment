@@ -5,7 +5,9 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Card, CardMedia } from "@mui/material";
 
+// ========== start Product modal component=======================//
 export default function ProductModal({ open, handleClose, product }) {
+  // ===== product object Destructuring ====//
   const img = product?.meta.banners;
   const { logo, companyName } = product?.meta;
   const { addresses } = product;

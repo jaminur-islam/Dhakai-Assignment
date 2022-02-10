@@ -24,7 +24,8 @@ const useStyle = makeStyles({
   },
 });
 
-const Products = () => {
+//============================= Start Products component================================//
+const Products = ({ inputValue }) => {
   const classes = useStyle();
   const token = localStorage.getItem("token");
   const [products, setProducts] = useState([]);
@@ -32,6 +33,7 @@ const Products = () => {
   const [load, setIsLoad] = useState(false);
   const [limit, setLimit] = useState(8);
 
+  //=================load Product data=============================//
   useEffect(() => {
     setIsLoading(true);
     if (token) {
@@ -49,15 +51,15 @@ const Products = () => {
           setProducts(result.result.manufacturers);
         });
     }
-  }, [limit, load]);
+  }, [limit, load, inputValue]);
 
+  // ================ handle button background color=====================//
   const [isActive, setIsActive] = useState(0);
   const handleButton = (index) => {
     setIsActive(index);
     setIsLoad(!load);
   };
 
-  // console.log(products);
   return (
     <Box>
       <Box

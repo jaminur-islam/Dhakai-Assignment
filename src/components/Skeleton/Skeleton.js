@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const SkeletonContainer = styled.div`
+const SkeletonContent = styled.div`
   min-height: 320px;
   border-radius: 6px;
   background-color: #fff;
@@ -28,7 +28,7 @@ const SkeletonContainer = styled.div`
       }
     }
   }
-  .logo {
+  .cart_logo {
     position: absolute;
     top: 40%;
     left: 25%;
@@ -45,29 +45,29 @@ const SkeletonContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
   }
-  .heading {
+  .cart_heading {
     min-height: 24px;
     width: 220px;
   }
-  .paragraph {
+  .cart_paragraph {
     min-height: 16px;
     margin-top: 5px;
     width: 250px;
   }
 
-  .button {
+  .cart_button {
     min-width: 120px;
     max-width: 120px;
     border-radius: 100px;
     height: 30px;
     margin-top: 10px;
   }
-  .skeleton-animation {
+  .main_skeleton_animation {
     opacity: 1;
-    animation: skeleton-loading 1s linear infinite alternate;
+    animation: skeleton_loading_animation 1s linear infinite alternate;
   }
 
-  @keyframes skeleton-loading {
+  @keyframes skeleton_loading_animation {
     0% {
       background-color: hsl(1500, 20%, 70%);
     }
@@ -80,23 +80,23 @@ const SkeletonContainer = styled.div`
 
 const Skeleton = () => {
   return (
-    <SkeletonContainer>
+    <SkeletonContent>
       <div className="cover ">
-        <div className="photo skeleton-animation"></div>
-        <div className="photo skeleton-animation"></div>
+        <div className="photo main_skeleton_animation"></div>
+        <div className="photo main_skeleton_animation"></div>
       </div>
 
-      <div className="logo skeleton-animation"></div>
+      <div className="cart_logo main_skeleton_animation"></div>
 
       <div className="card-body">
-        <div className="heading skeleton-animation"></div>
+        <div className="cart_heading main_skeleton_animation"></div>
 
-        <div className="paragraph skeleton-animation my-2"></div>
-        <div className="paragraph skeleton-animation"></div>
+        <div className="cart_paragraph main_skeleton_animation my-2"></div>
+        <div className="cart_paragraph main_skeleton_animation"></div>
 
-        <div className="button skeleton-animation mt-3"></div>
+        <div className="cart_button main_skeleton_animation mt-3"></div>
       </div>
-    </SkeletonContainer>
+    </SkeletonContent>
   );
 };
 
